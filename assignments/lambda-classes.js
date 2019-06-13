@@ -1,28 +1,42 @@
 // CODE here for your Lambda Classes
 
-class Person{
+class Person {
     constructor(data) {
-    this.name = data.name;
-    this.age = data.age;
-    this.location = data.location;
-  }
-  speak(){
-    return `Hey, my name is ${this.name}, and I am from ${this.location}!`;
-  }
+        this.name = data.name;
+        this.age = data.age;
+        this.location = data.location;
+    }
+    speak() {
+        return `Hey, my name is ${this.name}, and I am from ${this.location}!`;
+    }
 }
 
-class Instructor extends Person{
+class Instructor extends Person {
     constructor(lambda) {
-      super(lambda)
-  this.specialty = lambda.specialty;
-  this.favLanguage = lambda.favLanguage;
-  this.catchPhrase = lambda.catchPhrase;
-}
-demo(subject){
-  console.log(`Today we are learning about ${subject}`);
+        super(lambda)
+        this.specialty = lambda.specialty;
+        this.favLanguage = lambda.favLanguage;
+        this.catchPhrase = lambda.catchPhrase;
+    }
+    demo(subject) {
+        console.log(`Today we are learning about ${subject}`);
+    }
+
+    grade(student, subject) {
+        console.log(`${student.name} recieves a perfect score on ${subject}`);
+    }
 }
 
-grade(student, subject){
-    console.log(`${student.name} recieves a perfect score on ${subject}`);
-}
+class Student extends Instructor {
+    constructor(lambda) {
+        super(lambda)
+        this.previousBackground = lambda.previousBackground;
+        this.className = lambda.className;
+        this.favSubjects = lambda.favSubjects;
+    }
+    listsSubjects() {
+        for(i = 0; i < this.favSubjects.length; i++){
+            console.log(this.favSubjects[i]);
+        }
+    }
 }
